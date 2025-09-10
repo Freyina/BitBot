@@ -8,10 +8,11 @@ on:
 jobs:
   run-bitbot:
     runs-on: windows-latest
+    env:
+      DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}   # <-- match Python
 
     steps:
       - uses: actions/checkout@v3
-
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
