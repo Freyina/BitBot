@@ -24,7 +24,6 @@ if not token:
 
 # --- Config ---
 ALLOWED_CHANNEL_ID = 763284891675656222
-ffmpeg_exe = r"ffmpeg\ffmpeg-7.1.1-full_build\bin\ffmpeg.exe"
 
 
 # --- Bot instance ---
@@ -56,7 +55,7 @@ class SoundButton(discord.ui.Button):
         if vc.is_playing():
             vc.stop()
 
-        source = discord.FFmpegPCMAudio(executable=ffmpeg_exe, source=file_path)
+        source = discord.FFmpegPCMAudio(source=file_path)
         vc.play(source)
         await interaction.response.send_message(f"▶️ Playing **{self.filename}**", ephemeral=True)
 
@@ -182,7 +181,7 @@ async def play(ctx, filename: str):
         return
 
     try:
-        source = discord.FFmpegPCMAudio(executable=ffmpeg_exe, source=file_path)
+        source = discord.FFmpegPCMAudio(source=file_path)
 
         def after_playing(error):
             if error:
