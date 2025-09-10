@@ -2,10 +2,13 @@ name: Run BitBot
 
 on:
   workflow_dispatch: # allows manual/API triggers
+  repository_dispatch:
+    types: [bitrun]  # allows triggering via webhook
 
 jobs:
   run-bitbot:
     runs-on: windows-latest
+
     steps:
       - uses: actions/checkout@v3
 
