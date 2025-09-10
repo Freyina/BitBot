@@ -1,10 +1,7 @@
 name: Run BitBot
 
-# Trigger on push to main or manual run
+# Only allow manual trigger
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
@@ -22,11 +19,11 @@ jobs:
         with:
           python-version: "3.11"
 
-      # 3. Install FFmpeg using Chocolatey
+      # 3. Install FFmpeg
       - name: Install FFmpeg
         run: choco install ffmpeg -y
 
-      # 4. Install Python dependencies from requirements.txt
+      # 4. Install Python dependencies
       - name: Install dependencies
         run: pip install -r requirements.txt
 
@@ -34,4 +31,4 @@ jobs:
       - name: Run BitBot
         run: python BitBot/BitBot.py
         env:
-          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }} # GitHub secret
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
