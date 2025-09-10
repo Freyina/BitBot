@@ -14,6 +14,7 @@ import sound_paths as sp
 
 
 # --- Load token ---
+load_dotenv()
 token = os.getenv("DISCORD_TOKEN")
 
 # If not found, fall back to local .env file (for development)
